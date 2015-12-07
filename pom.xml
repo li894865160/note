@@ -15,14 +15,14 @@
   </properties>
   
   <modules>
-  	<module>note-common</module>
-  	<module>note-util</module>
-  	<module>note-model</module>
-  	<module>note-dao</module>
-  	<module>note-service</module>
-  	<module>note-web</module>
-  	<module>note-management</module>
-  	<module>note-html</module>
+  	<module>common</module>
+  	<module>util</module>
+  	<module>model</module>
+  	<module>dao</module>
+  	<module>service</module>
+  	<module>web</module>
+  	<module>management</module>
+  	<module>html</module>
   </modules>
   
   <dependencies>
