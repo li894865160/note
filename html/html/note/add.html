@@ -2,9 +2,41 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>add note</title>
-<script type="text/javascript" src="/statics/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript" src="/statics/js/jquery-1.11.3.min.js"></script>
+<script type="text/javascript"
+	src="/statics/plugins/ckeditor/ckeditor.js"></script>
+<script type="text/javascript"
+	src="/statics/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript"
+	src="/statics/plugins/bootstrapvalidator/js/bootstrapValidator.min.js"></script>
+<script type="text/javascript" src="/statics/js/note/note_add.js"></script>
+
+<link rel="stylesheet"
+	href="/statics/plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet"
+	href="/statics/plugins/bootstrap/css/bootstrap-theme.min.css">
+<link rel="stylesheet"
+	href="/statics/plugins/bootstrapvalidator/css/bootstrapValidator.min.css">
 </head>
 <body>
-<textarea id="TextArea1" cols="20" rows="2" class="ckeditor"></textarea> 
+	<form id="addNoteForm">
+		<div class="form-group">
+			<div class="col-lg-4">
+			<label class="col-lg-3 control-label">标题</label>
+				<input type="text" class="form-control" name="title"
+					placeholder="标题" id="title" />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-lg-10">
+				<textarea id="content" name="content" cols="20" rows="2"
+					class="ckeditor"></textarea>
+			</div>
+		</div>
+
+		<button id="validateBtn" type="submit">提交</button>
+		<button id="resetBtn" type="reset">重置</button>
+	</form>
+
 </body>
 </html>
