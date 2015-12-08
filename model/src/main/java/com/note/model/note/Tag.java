@@ -61,6 +61,11 @@ public class Tag implements Serializable {
     @Column(name = "update_time")
     private Date updateTime;
 
+    /**
+     * 是否可用
+     */
+    @Column(name = "enable")
+    private Boolean enable;
     
 	public Integer getId() {
 		return id;
@@ -108,6 +113,14 @@ public class Tag implements Serializable {
 
 	public void setUpdateTime(Date updateTime) {
 		this.updateTime = updateTime;
+	}
+
+	public Boolean getEnable() {
+		return enable;
+	}
+
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
 	}
     
 }

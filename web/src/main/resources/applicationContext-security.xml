@@ -9,9 +9,11 @@
 	<http pattern="/theme/**" security="none" />
 	<http pattern="/static/**" security="none" />
 	<http use-expressions="true" auto-config="false" disable-url-rewriting="true" entry-point-ref="customerAuthenticationEntryPoint">
-
-		<!-- 我的账户登录保护 -->
+		
 		<intercept-url pattern="/user/list/**" access="hasAnyRole('NORMAL_USER','ADMIN_ROLE')" />
+		<!-- <intercept-url pattern="/note/**" access="hasAnyRole('NORMAL_USER','ADMIN_ROLE')" />
+		<intercept-url pattern="/tag/**" access="hasAnyRole('NORMAL_USER','ADMIN_ROLE')" />
+		<intercept-url pattern="/category/**" access="hasAnyRole('NORMAL_USER','ADMIN_ROLE')" /> -->
 		<access-denied-handler error-page="/404error.html"/>
 		<logout invalidate-session="true"  logout-url="/logout" success-handler-ref="customerLogoutSuccessHandler"/>
 		<session-management>

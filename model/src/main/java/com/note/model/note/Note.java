@@ -52,8 +52,8 @@ public class Note implements Serializable {
 	/**
 	 * 类别
 	 */
-	@Column(name = "category_id")
-	private Integer categoryId;
+	@Column(name = "category")
+	private Integer category;
 	
 	/**
 	 * 标签
@@ -105,12 +105,12 @@ public class Note implements Serializable {
 		this.content = content;
 	}
 
-	public Integer getCategoryId() {
-		return categoryId;
+	public Integer getCategory() {
+		return category;
 	}
 
-	public void setCategoryId(Integer categoryId) {
-		this.categoryId = categoryId;
+	public void setCategory(Integer category) {
+		this.category = category;
 	}
 
 	public Integer[] getTags() {

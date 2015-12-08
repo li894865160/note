@@ -19,23 +19,43 @@
 	href="/statics/plugins/bootstrapvalidator/css/bootstrapValidator.min.css">
 </head>
 <body>
-	<form id="addNoteForm">
+	<form action="/web/note/add" id="addNoteForm" method="post">
 		<div class="form-group">
 			<div class="col-lg-4">
-			<label class="col-lg-3 control-label">标题</label>
+			<label>标题</label>
 				<input type="text" class="form-control" name="title"
 					placeholder="标题" id="title" />
 			</div>
 		</div>
 		<div class="form-group">
+	        <div class="col-lg-10">
+	        <label>Category</label>
+	            <div class="btn-group" id="category" data-toggle="buttons">
+	                
+	            </div>
+	        </div>
+		</div>
+		<div class="form-group">
+	        <div class="col-lg-10">
+	        <label>Tags</label>
+	            <div class="btn-group" id="tags" data-toggle="buttons">
+	                
+	            </div>
+	        </div>
+		</div>
+		<div class="form-group">
 			<div class="col-lg-10">
+			<label>内容</label>
 				<textarea id="content" name="content" cols="20" rows="2"
 					class="ckeditor"></textarea>
 			</div>
 		</div>
-
-		<button id="validateBtn" type="submit">提交</button>
-		<button id="resetBtn" type="reset">重置</button>
+ 		<div class="form-group">
+ 			<div class="col-sm-offset-2 col-sm-10">
+				<button id="validateBtn" type="submit">提交</button>
+				<button id="resetBtn" type="reset">重置</button>
+			</div>
+		</div>
 	</form>
 
 </body>

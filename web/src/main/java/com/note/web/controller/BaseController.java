@@ -20,8 +20,8 @@ import com.note.web.entity.ResponseEntity;
 
 public class BaseController {
 
-    @Autowired
-    protected AbstractMessageSource messageSource;
+//    @Autowired
+//    protected AbstractMessageSource messageSource;
 
     /**
      * request
@@ -200,9 +200,9 @@ public class BaseController {
      */
     @SuppressWarnings("rawtypes")
     protected final <T> ResponseEntity responseEntity(final int code, final T entity, String message) {
-        if (null != message && !"".equals(message)) {
-            message = messageSource.getMessage(message, null, Locale.getDefault());
-        }
+//        if (null != message && !"".equals(message)) {
+//            message = messageSource.getMessage(message, null, Locale.getDefault());
+//        }
         return new ResponseEntity(code, message, 0, null, entity);
     }
 
@@ -218,9 +218,9 @@ public class BaseController {
      */
     @SuppressWarnings("rawtypes")
     protected final <T> ResponseEntity responseEntity(final int code, String message, final long count, List<T> data) {
-        if (null != message && !"".equals(message)) {
-            message = messageSource.getMessage(message, null, Locale.getDefault());
-        }
+//        if (null != message && !"".equals(message)) {
+//            message = messageSource.getMessage(message, null, Locale.getDefault());
+//        }
         return new ResponseEntity(code, message, count, data, null);
     }
 }
