@@ -19,21 +19,13 @@
 		<session-management>
             <concurrency-control max-sessions="1" error-if-maximum-exceeded="false" expired-url="/logout"/>
         </session-management>
-        <remember-me key="IuIJIfdsmQLFcDFJKEdjkGZNk" services-ref="rememberMeServices"/>
+        
         <custom-filter position="FORM_LOGIN_FILTER" ref="customerUsernamePasswordAuthenticationFilter"/>
 	</http>
 	
 	<beans:bean id="customerAuthenticationEntryPoint" class="com.note.web.security.entrypoint.CustomerAuthenticationEntryPoint">
 		<beans:constructor-arg value="/login.jsp" />
 		<beans:property name="useForward" value="false" />
-	</beans:bean>
-	
-	<beans:bean id="rememberMeServices"   class="com.note.web.security.service.IPTokenBasedRememberMeServices">  
-    	<beans:property name="userDetailsService" ref="securityUserService" />  
-    	<beans:property name="key" value="IuIJIfdsmQLFcDFJKEdjkGZNk" /> 
-    	<beans:property name="alwaysRemember" value="true" />
-    	<beans:property name="tokenValiditySeconds" value="3600"/>
-    	<beans:property name="cookieName" value="note_key" />
 	</beans:bean>
 	
 	<beans:bean id="customerUsernamePasswordAuthenticationFilter" class="com.note.web.security.filter.CustomerUsernamePasswordAuthenticationFilter">

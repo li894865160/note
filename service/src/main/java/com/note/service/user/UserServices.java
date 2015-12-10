@@ -18,5 +18,7 @@ public interface UserServices {
 	User getById(int id);
 	
 	User update(User user);
+	
+	void updateUserIpAndLastestLoginTime(User user, String ip);
 }
  

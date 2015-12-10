@@ -69,5 +69,13 @@ public class UserServiceImpl implements UserServices{
         return userDao.update(user);
     }
 
+	@Override
+	@Transactional(propagation = Propagation.REQUIRED, rollbackFor = java.lang.RuntimeException.class)
+	public void updateUserIpAndLastestLoginTime(User user, String ip) {
+		user.setLastestLoginIp(ip);
+		user.setLastestLoginTime(new Date());
+		userDao.update(user);
+	}
+
 }
  
