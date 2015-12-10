@@ -65,7 +65,7 @@ $(document).ready(function() {
             category: {
                 validators: {
                     notEmpty: {
-                        message: 'The gender is required'
+                        message: '请选择分类'
                     }
                 }
             },
@@ -73,8 +73,8 @@ $(document).ready(function() {
                 validators: {
                     choice: {
                         min: 1,
-                        max: 2,
-                        message: 'Please choose 1 - 2 languages you can speak'
+                        max: 5,
+                        message: '请选择1-5个标签'
                     }
                 }
             }
@@ -89,4 +89,5 @@ $(document).ready(function() {
     $('#resetBtn').click(function() {
         $('#addNoteForm').data('bootstrapValidator').resetForm(true);
     });
+
 });
