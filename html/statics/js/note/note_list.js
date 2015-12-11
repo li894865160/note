@@ -39,13 +39,13 @@ function initTable(){
 			title: 'id'
 		}, {
 			field: 'title',
-			width: '15%',
+			width: '25%',
 			valign: 'middle',
 			align: 'center',
 			title: '标题'
 		}, {
 			field: 'titlePic',
-			width: '15%',
+			width: '30%',
 			valign: 'middle',
 			align: 'center',
 			title: '展示图片'
@@ -53,17 +53,17 @@ function initTable(){
 			field: 'createTime',
 			align: 'center',
 			valign: 'middle',
-			width: '12%',
+			width: '15%',
 			title: '发布时间',
-//			formatter: function(createTime) {
-//				var datetime = new Date(createTime);
-//				return datetime.format("yyyy-MM-dd HH:mm:ss");
-//			}
+			formatter: function(createTime) {
+				var datetime = new Date(createTime);
+				return datetime.format("yyyy-MM-dd HH:mm:ss");
+			}
 		}, {
 			formatter: operateFormatter,
 			align: 'center',
 			valign: 'middle',
-			width: '15%',
+			width: '20%',
 			title: '操作'
 		}]
 	});

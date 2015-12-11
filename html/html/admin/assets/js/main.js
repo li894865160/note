@@ -39,16 +39,16 @@ head.js("assets/js/custom/scriptbreaker-multiple-accordion-1.js", function() {
 
 ////Right Sliding menu
 
-head.js("assets/js/slidebars/slidebars.min.js", "http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js", function() {
-
-    $(document).ready(function() {
-        var mySlidebars = new $.slidebars();
-
-        $('.toggle-left').on('click', function() {
-            mySlidebars.toggle('right');
-        });
-    });
-});
+//head.js("assets/js/slidebars/slidebars.min.js", "http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js", function() {
+//
+//  $(document).ready(function() {
+//      var mySlidebars = new $.slidebars();
+//
+//      $('.toggle-left').on('click', function() {
+//          mySlidebars.toggle('right');
+//      });
+//  });
+//});
 
 //-------------------------------------------------------------
 
@@ -289,29 +289,29 @@ head.js("assets/js/clock/jquery.clock.js", function() {
 
 //------------------------------------------------------------- 
 
-head.js("assets/js/gage/raphael.2.1.0.min.js", "assets/js/gage/justgage.js", function() {
-
-
-
-    var g1;
-    window.onload = function() {
-        var g1 = new JustGage({
-            id: "g1",
-            value: getRandomInt(0, 1000),
-            min: 0,
-            max: 1000,
-            relativeGaugeSize: true,
-            gaugeColor: "rgba(0,0,0,0.4)",
-            levelColors: "#0DB8DF",
-            labelFontColor : "#ffffff",
-            titleFontColor: "#ffffff",
-            valueFontColor :"#ffffff",
-            label: "VISITORS",
-            gaugeWidthScale: 0.2,
-            donut: true
-        });
-    };
-
-
-
-});
+//head.js("assets/js/gage/raphael.2.1.0.min.js", "assets/js/gage/justgage.js", function() {
+//
+//
+//
+//  var g1;
+//  window.onload = function() {
+//      var g1 = new JustGage({
+//          id: "g1",
+//          value: getRandomInt(0, 1000),
+//          min: 0,
+//          max: 1000,
+//          relativeGaugeSize: true,
+//          gaugeColor: "rgba(0,0,0,0.4)",
+//          levelColors: "#0DB8DF",
+//          labelFontColor : "#ffffff",
+//          titleFontColor: "#ffffff",
+//          valueFontColor :"#ffffff",
+//          label: "VISITORS",
+//          gaugeWidthScale: 0.2,
+//          donut: true
+//      });
+//  };
+//
+//
+//
+//});

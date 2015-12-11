@@ -55,10 +55,10 @@
 	</beans:bean>
 	
 	<beans:bean id="customerAuthenticationSuccessHandler" class="com.note.web.security.handler.CutomerAuthenticationSuccessHandler">
-	    <beans:property name="defaultTargetUrl"  value="/user/loginSuccess" />
+	    <beans:property name="defaultTargetUrl"  value="/loginSuccess" />
 	</beans:bean>
 	<beans:bean id="customerAuthenticationFailedHandler" class="com.note.web.security.handler.CustomerAuthenticationFailedHandler">
-	    <beans:property name="defaultFailureUrl"  value="/user/loginFailed" />
+	    <beans:property name="defaultFailureUrl"  value="/loginFailed" />
 	    <beans:property name="useForward" value="true" />
 	</beans:bean>
 	

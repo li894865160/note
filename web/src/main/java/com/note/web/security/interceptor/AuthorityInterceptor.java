@@ -44,7 +44,7 @@ public class AuthorityInterceptor extends HandlerInterceptorAdapter {
 		// 访问静态资源
 		String uri = request.getRequestURI();
 		if (uri.contains("/statics/") || uri.contains("/static/") || uri.contains("logout") || uri.contains("/download")
-				|| uri.contains("/page/") || uri.contains("/thirdpart/") || uri.contains("/login")) {
+				|| uri.contains("/html") || uri.contains("/index.html") || uri.contains("/login")) {
 			return true;
 		}
 

@@ -1,8 +1,10 @@
 package com.note.web.controller.login;
 
 import java.io.IOException;
+import java.util.Date;
 
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +20,7 @@ import com.note.web.controller.BaseController;
 import com.note.web.entity.ResponseEntity;
 import com.note.web.security.util.SecurityUtil;
 
+@SuppressWarnings("rawtypes")
 @Controller
 @RequestMapping(value = "/")
 public class LoginController extends BaseController {
@@ -25,7 +28,6 @@ public class LoginController extends BaseController {
 	@Resource(name = "userService")
 	private UserServices userService;
 
-	@SuppressWarnings("rawtypes")
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	@ResponseBody
 	@Deprecated
@@ -47,5 +49,23 @@ public class LoginController extends BaseController {
 		userService.updateUserIpAndLastestLoginTime(user, RequestUtil.getRemoteIPAddress(getRequest()));
 		SecurityUtil.setSecurityUser(user);
 		return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, user, HTTPCodeStatus.HTTPCODE_OK_MESSAGE);
+	}
+	
+
+	@RequestMapping(value="loginSuccess")
+	@ResponseBody
+	public ResponseEntity loginSuccess(HttpServletRequest request) {
+		User user = SecurityUtil.currentLogin();
+		user = userService.getById(user.getId());
+		user.setLastestLoginTime(new Date());
+		user.setLastestLoginIp(RequestUtil.getRemoteIPAddress(request));
+		userService.update(user);
+		return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, user, HTTPCodeStatus.HTTPCODE_OK_MESSAGE);
+	}
+
+	@RequestMapping(value="loginFailed")
+	public String loginFailed() {
+		System.out.println("登录失败");
+		return "redirect:logout"; 
 	}
 }
