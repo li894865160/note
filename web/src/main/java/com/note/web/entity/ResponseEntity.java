@@ -1,85 +1,85 @@
 package com.note.web.entity;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+
+import com.note.common.HTTPCodeStatus;
 
 @SuppressWarnings("serial")
 public class ResponseEntity<T> implements Serializable {
 
-    /**
-     * 返回状态码
-     */
-    private int code;
+	public ResponseEntity() {
 
-    /**
-     * 提示信息
-     */
-    private String message;
+	}
 
-    /**
-     * 分页总条数
-     */
-    private long total;
+	public ResponseEntity(int code) {
 
-    /**
-     * 分页数据集
-     */
-    private List<T> rows = new ArrayList<T>();
+		this.code = code;
+	}
 
-    /**
-     * 数据模型
-     */
-    private Object data;
+	public ResponseEntity(Object data) {
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    public ResponseEntity(int code, String message, long total, List rows, Object data) {
-        this.code = code;
-        this.message = message;
-        this.total = total;
-        this.rows = rows;
-        this.data = data;
-    }
+		this.data = data;
+	}
 
-    public int getCode() {
-        return code;
-    }
+	public ResponseEntity(int code, String message) {
 
-    public void setCode(int code) {
-        this.code = code;
-    }
+		this.code = code;
+		this.message = message;
+	}
 
-    public String getMessage() {
-        return message;
-    }
+	public ResponseEntity(int code, Object data, String message) {
 
-    public void setMessage(String message) {
-        this.message = message;
-    }
+		this.code = code;
+		this.data = data;
+		this.message = message;
+	}
 
-    public Object getData() {
-        return data;
-    }
+	/**
+	 * http返回结果状态码
+	 */
+	private int code = HTTPCodeStatus.HTTPCODE_OK;
 
-    public void setData(Object data) {
-        this.data = data;
-    }
+	/**
+	 * 返回的数据内容 <br/>
+	 * 有如下4种数据格式：<br/>
+	 * 单值："value";对象：{id,...}；列表：[{},{},...],分页对象Pagination：{total:100,list:[{},
+	 * {},...]}
+	 */
+	private Object data;
 
-    public long getTotal() {
-        return total;
-    }
+	/**
+	 * 错误消息
+	 */
+	private String message;
 
-    public void setTotal(long total) {
-        this.total = total;
-    }
+	public int getCode() {
 
-    @SuppressWarnings("rawtypes")
-    public List getRows() {
-        return rows;
-    }
+		return code;
+	}
 
-    @SuppressWarnings({ "rawtypes", "unchecked" })
-    public void setRows(List rows) {
-        this.rows = rows;
-    }
+	public void setCode(int code) {
+
+		this.code = code;
+	}
+
+	public Object getData() {
+
+		return data;
+	}
+
+	public void setData(Object data) {
+
+		this.data = data;
+	}
+
+	public String getMessage() {
+
+		return message;
+	}
+
+	public void setMessage(String message) {
+
+		this.message = message;
+	}
+
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.note.common.HTTPCodeStatus;
 import com.note.model.note.Category;
 import com.note.service.note.CategoryServices;
 import com.note.web.controller.BaseController;
@@ -27,7 +28,9 @@ public class CategoryController extends BaseController {
     @RequestMapping(value="list")
 	public ResponseEntity list(){
 		List<Category> tags = categoryService.list();
-		return responseEntity(200, "成功", tags.size(), tags);
+		page.setResult(tags);
+		page.setPageSize(tags.size());
+		return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, page, HTTPCodeStatus.HTTPCODE_OK_MESSAGE);
 	}
 }
  

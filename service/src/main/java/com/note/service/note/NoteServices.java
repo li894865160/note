@@ -2,6 +2,7 @@ package com.note.service.note;
 
 import java.util.List;
 
+import com.note.common.Page;
 import com.note.model.note.Note;
 
 public interface NoteServices {
@@ -13,4 +14,6 @@ public interface NoteServices {
     List<Note> getAll();
     
     Note getById(int id);
+    
+    Page list(Page page, Note note);
 }

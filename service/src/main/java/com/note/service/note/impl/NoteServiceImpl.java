@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.note.common.Page;
 import com.note.dao.note.NoteDao;
 import com.note.model.note.Note;
 import com.note.service.note.NoteServices;
@@ -73,4 +74,12 @@ public class NoteServiceImpl implements NoteServices {
         }
         return str;
     }
+
+	@Override
+	@Transactional(propagation = Propagation.NOT_SUPPORTED)
+	public Page list(Page page, Note note) {
+		List<Note> list = noteDao.list(page, note);
+		page.setResult(list);
+		return page;
+	}
 }

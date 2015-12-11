@@ -1,9 +1,11 @@
 package com.note.dao.note;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.note.common.Page;
 import com.note.dao.BaseDao;
 import com.note.model.note.Note;
 
@@ -61,5 +63,14 @@ public class NoteDao extends BaseDao{
      */
     public Note getById(int id){
         return super.get(id);
+    }
+    
+    @SuppressWarnings("unchecked")
+	public List<Note> list(Page page, Note note){
+    	final int firstResult = page.getCurrentPage() >= 1 ? page.getPageSize() * (page.getCurrentPage() - 1) : 0;
+    	Map<String, Object> map = configMap(new String[]{"from", "pageSize"}, new Object[]{firstResult, page.getPageSize()});
+    	String sql = "select * from note where 1=1 ";
+    	sql += " limit :from, :pageSize";
+    	return (List<Note>) super.listEntityWithSql(sql, map);
     }
 }

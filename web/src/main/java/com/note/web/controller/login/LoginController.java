@@ -38,14 +38,14 @@ public class LoginController extends BaseController {
 		}
 		// pwd是请求来的用户密码的MD5摘要
 		if (user == null || password == null || "".equals(password) || !password.equals(user.getPassword())) {
-			return responseEntity(HTTPCodeStatus.HTTPCODE_LOGIN_ERROR, null, HTTPCodeStatus.HTTPCODE_LOGIN_ERROR_MESSAGE);
+			return returnFailed(HTTPCodeStatus.HTTPCODE_LOGIN_ERROR,  HTTPCodeStatus.HTTPCODE_LOGIN_ERROR_MESSAGE);
 		}
 		if (!user.getEnable()) {
-			return responseEntity(HTTPCodeStatus.HTTPCODE_LOGIN_ERROR, null, HTTPCodeStatus.HTTPCODE_LOGIN_ERROR_MESSAGE);
+			return returnFailed(HTTPCodeStatus.HTTPCODE_LOGIN_ERROR,  HTTPCodeStatus.HTTPCODE_LOGIN_ERROR_MESSAGE);
 		}
 
 		userService.updateUserIpAndLastestLoginTime(user, RequestUtil.getRemoteIPAddress(getRequest()));
 		SecurityUtil.setSecurityUser(user);
-		return responseEntity(HTTPCodeStatus.HTTPCODE_OK, user, HTTPCodeStatus.HTTPCODE_OK_MESSAGE);
+		return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, user, HTTPCodeStatus.HTTPCODE_OK_MESSAGE);
 	}
 }

@@ -6,6 +6,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.note.common.HTTPCodeStatus;
 import com.note.model.note.Note;
 import com.note.model.user.User;
 import com.note.service.note.NoteServices;
@@ -15,6 +16,7 @@ import com.note.web.security.annotation.Authority;
 import com.note.web.security.common.AuthorityType;
 import com.note.web.security.util.SecurityUtil;
 
+@SuppressWarnings("rawtypes")
 @Controller
 @RequestMapping(value = "/note")
 public class NoteController extends BaseController {
@@ -22,7 +24,6 @@ public class NoteController extends BaseController {
     @Resource(name = "noteService")
     private NoteServices noteService;
     
-    @SuppressWarnings("rawtypes")
     @ResponseBody
     @RequestMapping(value="add")
     @Authority(type = AuthorityType.SECURITY)
@@ -30,15 +31,23 @@ public class NoteController extends BaseController {
         User user = SecurityUtil.currentLogin();
         note.setUserId(user.getId());
         note = noteService.add(note);
-        return responseEntity(200, note, "成功");
+        return returnSuccess(HTTPCodeStatus.HTTPCODE_OK);
     }
     
-    @SuppressWarnings("rawtypes")
+    
     @ResponseBody
     @RequestMapping(value="test")
     @Authority(type = AuthorityType.SECURITY)
     private ResponseEntity test(){
         //SecurityUtil.setSecurityUser(null);
-        return responseEntity(200, null, "成功");
+        return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, null, HTTPCodeStatus.HTTPCODE_OK_MESSAGE);
+    }
+    
+    @ResponseBody
+    @RequestMapping(value="list")
+    @Authority(type = AuthorityType.SECURITY)
+    public ResponseEntity list(Note note){
+    	page = noteService.list(page, note);
+    	return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, page);
     }
 }
