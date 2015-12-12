@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 import com.note.common.Page;
 import com.note.dao.BaseDao;
 import com.note.model.note.Note;
+import com.note.util.validate.ValidateUtil;
 
 
 @Repository(value="noteDao")
@@ -70,6 +71,14 @@ public class NoteDao extends BaseDao{
     	final int firstResult = page.getCurrentPage() >= 1 ? page.getPageSize() * (page.getCurrentPage() - 1) : 0;
     	Map<String, Object> map = configMap(new String[]{"from", "pageSize"}, new Object[]{firstResult, page.getPageSize()});
     	String sql = "select * from note where 1=1 ";
+    	if(!ValidateUtil.isEmpty(note.getTitle())){
+    		sql += " and title like :title";
+    		map.put("title", "%"+note.getTitle()+"%");
+    	}
+    	if(note.getUserId() != null && note.getUserId() > 0){
+    		sql += " and user_id = :userId";
+    		map.put("userId", note.getUserId());
+    	}
     	sql += " limit :from, :pageSize";
     	return (List<Note>) super.listEntityWithSql(sql, map);
     }

@@ -18,6 +18,8 @@ import com.note.util.request.RequestUtil;
 import com.note.util.validate.ValidateUtil;
 import com.note.web.controller.BaseController;
 import com.note.web.entity.ResponseEntity;
+import com.note.web.security.annotation.Authority;
+import com.note.web.security.common.AuthorityType;
 import com.note.web.security.util.SecurityUtil;
 
 @SuppressWarnings("rawtypes")
@@ -67,5 +69,13 @@ public class LoginController extends BaseController {
 	public String loginFailed() {
 		System.out.println("登录失败");
 		return "redirect:logout"; 
+	}
+	
+	@RequestMapping(value="getNickname")
+	@ResponseBody
+	@Authority(type = AuthorityType.SECURITY)
+	public ResponseEntity getNickname(){
+		User user = SecurityUtil.currentLogin();
+		return returnSuccess(user.getNickname());
 	}
 }

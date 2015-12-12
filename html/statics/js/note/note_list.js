@@ -8,7 +8,15 @@ $(function() {
 	$table.bootstrapTable('removeAll');
 	$table.bootstrapTable('refresh');
 	initTable();
+	
+	$("#search").click(function () {
+		
+			$("#table").bootstrapTable('destroy');
+			initTable();
+		
+	});
 });
+
 
 function initTable(){
 	
@@ -19,8 +27,8 @@ function initTable(){
 				pageSize: param.limit, //每页显示条数
 				currentPage: param.offset / param.limit + 1 //第几页
 			};
-//			var formData = $("#tableSearchForm").serializeJson(); //将查询表单参数转为json对象
-//			p = $.extend(p, formData);
+			var formData = $("#tableSearchForm").serializeJson(); //将查询表单参数转为json对象
+			p = $.extend(p, formData);
 			return p;
 		},
 		uniqueId: "id",

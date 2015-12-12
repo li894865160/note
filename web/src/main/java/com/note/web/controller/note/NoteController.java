@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.note.common.HTTPCodeStatus;
+import com.note.common.Page;
 import com.note.model.note.Note;
 import com.note.model.user.User;
 import com.note.service.note.NoteServices;
@@ -46,7 +47,8 @@ public class NoteController extends BaseController {
     @ResponseBody
     @RequestMapping(value="list")
     @Authority(type = AuthorityType.SECURITY)
-    public ResponseEntity list(Note note){
+    public ResponseEntity list(Page page, Note note){
+    	note.setUserId(SecurityUtil.currentLogin().getId());
     	page = noteService.list(page, note);
     	return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, page);
     }
