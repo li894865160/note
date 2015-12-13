@@ -3,14 +3,14 @@ function forward(url){
 }
 
 $(function() {
-	$.ajax({
+	common.ajax({
 			type: "post",
 			url: "/web/getNickname",
 			error: function(request) {
 				alert("Connection error");
 			},
 			success: function(data) {
-				$("#nickname").html(data.data);
+				$("#nickname").html(data);
 			}
 		});
 });

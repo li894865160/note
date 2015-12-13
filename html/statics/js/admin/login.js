@@ -10,7 +10,7 @@ function loginSubmit() {
 		success: function(data) {
 			
 			if (data.code == 200) {
-				window.location.href = "html/admin/index.html";
+				window.location.href = "/html/admin/index.html";
 			} else {
 				alert("登录失败");
 			}

@@ -80,7 +80,7 @@ public class NoteServiceImpl implements NoteServices {
 	public Page list(Page page, Note note) {
 		List<Note> list = noteDao.list(page, note);
 		page.setResult(list);
-		page.setTotalCount(getAll().size());
+		page.setTotalCount(noteDao.getCount(note));
 		return page;
 	}
 }

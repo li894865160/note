@@ -1,15 +1,15 @@
 //Sliding Effect Control
-head.js("assets/js/skin-select/jquery.cookie.js");
-head.js("assets/js/skin-select/skin-select.js");
+head.js("/statics/assets/js/skin-select/jquery.cookie.js");
+head.js("/statics/assets/js/skin-select/skin-select.js");
 
 //Showing Date
-head.js("assets/js/clock/date.js");
+head.js("/statics/assets/js/clock/date.js");
 
 //Bootstrap
 //head.js("assets/js/bootstrap.js");
 
 //NEWS STICKER
-head.js("assets/js/newsticker/jquery.newsTicker.js", function() {
+head.js("/statics/assets/js/newsticker/jquery.newsTicker.js", function() {
 
     var nt_title = $('#nt-title').newsTicker({
         row_height: 18,
@@ -26,13 +26,13 @@ head.js("assets/js/newsticker/jquery.newsTicker.js", function() {
 
 ////Acordion and Sliding menu
 
-head.js("assets/js/custom/scriptbreaker-multiple-accordion-1.js", function() {
+head.js("/statics/assets/js/custom/scriptbreaker-multiple-accordion-1.js", function() {
 
     $(".topnav").accordionze({
         accordionze: true,
         speed: 500,
-        closedSign: '<img src="assets/img/plus.png">',
-        openedSign: '<img src="assets/img/minus.png">'
+        closedSign: '<img src="/statics/assets/img/plus.png">',
+        openedSign: '<img src="/statics/assets/img/minus.png">'
     });
 
 });
@@ -53,7 +53,7 @@ head.js("assets/js/custom/scriptbreaker-multiple-accordion-1.js", function() {
 //-------------------------------------------------------------
 
 //SEARCH MENU
-head.js("assets/js/search/jquery.quicksearch.js", function() {
+head.js("/statics/assets/js/search/jquery.quicksearch.js", function() {
 
     $('input.id_search').quicksearch('#menu-showhide li, .menu-left-nest li');
    
@@ -65,7 +65,7 @@ head.js("assets/js/search/jquery.quicksearch.js", function() {
 
 
 //EASY PIE CHART
-head.js("assets/js/gage/jquery.easypiechart.min.js", function() {
+head.js("/statics/assets/js/gage/jquery.easypiechart.min.js", function() {
 
     $(function() {
 
@@ -117,7 +117,7 @@ head.js("assets/js/gage/jquery.easypiechart.min.js", function() {
 
 //TOOL TIP
 
-head.js("assets/js/tip/jquery.tooltipster.js", function() {
+head.js("/statics/assets/js/tip/jquery.tooltipster.js", function() {
 
     $('.tooltip-tip-x').tooltipster({
         position: 'right'
@@ -172,7 +172,7 @@ head.js("assets/js/tip/jquery.tooltipster.js", function() {
 
 //NICE SCROLL
 
-head.js("assets/js/nano/jquery.nanoscroller.js", function() {
+head.js("/statics/assets/js/nano/jquery.nanoscroller.js", function() {
 
     $(".nano").nanoScroller({
         //stop: true 
@@ -194,7 +194,7 @@ head.js("assets/js/nano/jquery.nanoscroller.js", function() {
 
 //------------------------------------------------------------- 
 //PAGE LOADER
-head.js("assets/js/pace/pace.js", function() {
+head.js("/statics/assets/js/pace/pace.js", function() {
 
     paceOptions = {
         ajax: false, // disabled
@@ -210,7 +210,7 @@ head.js("assets/js/pace/pace.js", function() {
 //------------------------------------------------------------- 
 
 //SPARKLINE CHART
-head.js("assets/js/chart/jquery.sparkline.js", function() {
+head.js("/statics/assets/js/chart/jquery.sparkline.js", function() {
 
     $(function() {
         $('.inlinebar').sparkline('html', {
@@ -243,31 +243,31 @@ head.js("assets/js/chart/jquery.sparkline.js", function() {
         });
     });
 
-    $(function() {
-        var sparklineLogin = function() {
-            $('#sparkline').sparkline(
-                [5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6, 7], {
-                    type: 'line',
-                    width: '100%',
-                    height: '25',
-                    lineColor: '#ffffff',
-                    fillColor: '#0DB8DF',
-                    lineWidth: 1,
-                    spotColor: '#ffffff',
-                    minSpotColor: '#ffffff',
-                    maxSpotColor: '#ffffff',
-                    highlightSpotColor: '#ffffff',
-                    highlightLineColor: '#ffffff'
-                }
-            );
-        }
-        var sparkResize;
-        $(window).resize(function(e) {
-            clearTimeout(sparkResize);
-            sparkResize = setTimeout(sparklineLogin, 500);
-        });
-        sparklineLogin();
-    });
+//  $(function() {
+//      var sparklineLogin = function() {
+//          $('#sparkline').sparkline(
+//              [5, 6, 7, 9, 9, 5, 3, 2, 2, 4, 6, 7], {
+//                  type: 'line',
+//                  width: '100%',
+//                  height: '25',
+//                  lineColor: '#ffffff',
+//                  fillColor: '#0DB8DF',
+//                  lineWidth: 1,
+//                  spotColor: '#ffffff',
+//                  minSpotColor: '#ffffff',
+//                  maxSpotColor: '#ffffff',
+//                  highlightSpotColor: '#ffffff',
+//                  highlightLineColor: '#ffffff'
+//              }
+//          );
+//      }
+//      var sparkResize;
+//      $(window).resize(function(e) {
+//          clearTimeout(sparkResize);
+//          sparkResize = setTimeout(sparklineLogin, 500);
+//      });
+//      sparklineLogin();
+//  });
 
 
 });
@@ -275,7 +275,7 @@ head.js("assets/js/chart/jquery.sparkline.js", function() {
 //------------------------------------------------------------- 
 
 //DIGITAL CLOCK
-head.js("assets/js/clock/jquery.clock.js", function() {
+head.js("/statics/assets/js/clock/jquery.clock.js", function() {
 
     //clock
     $('#digital-clock').clock({

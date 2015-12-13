@@ -2,7 +2,7 @@ var tags = "";
 var category = "";
 $(document).ready(function() {
 
-	$.ajax({
+	common.ajax({
 		url: '/web/category/list', // 跳转到 action  
 
 		type: 'post',
@@ -11,7 +11,7 @@ $(document).ready(function() {
 		async: false,
 		success: function(data) {
 			if (data.code = 200) {
-				$.each(data.data.result, function(i, item) {
+				$.each(data.result, function(i, item) {
 					category += "<label class=\"btn btn-default\">";
 					category += "<input type=\"radio\" name=\"category\" value=\"" + item.id + "\" />" + item.title;
 					category += "</label>";
@@ -24,7 +24,7 @@ $(document).ready(function() {
 		}
 	});
 
-	$.ajax({
+	common.ajax({
 		url: '/web/tag/list', // 跳转到 action  
 
 		type: 'post',
@@ -33,7 +33,7 @@ $(document).ready(function() {
 		async: false,
 		success: function(data) {
 			if (data.code = 200) {
-				$.each(data.data.result, function(i, item) {
+				$.each(data.result, function(i, item) {
 					tags += "<label class=\"btn btn-default\">";
 					tags += "<input type=\"checkbox\" name=\"tags\" value=\"" + item.id + "\" />" + item.title;
 					tags += "</label>";

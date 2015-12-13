@@ -82,4 +82,19 @@ public class NoteDao extends BaseDao{
     	sql += " limit :from, :pageSize";
     	return (List<Note>) super.listEntityWithSql(sql, map);
     }
+    
+	public long getCount(Note note) {
+		Map<String, Object> map = configMap(new String[] { "1" },
+				new Object[] { 1 });
+		String sql = "select count(id) from note where 1=:1 ";
+		if (!ValidateUtil.isEmpty(note.getTitle())) {
+			sql += " and title like :title";
+			map.put("title", "%" + note.getTitle() + "%");
+		}
+		if (note.getUserId() != null && note.getUserId() > 0) {
+			sql += " and user_id = :userId";
+			map.put("userId", note.getUserId());
+		}
+		return super.countWithSql(sql, map);
+	}
 }
