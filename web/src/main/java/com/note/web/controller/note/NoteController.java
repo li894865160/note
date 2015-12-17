@@ -4,6 +4,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.note.common.HTTPCodeStatus;
@@ -35,10 +36,9 @@ public class NoteController extends BaseController {
         return returnSuccess(HTTPCodeStatus.HTTPCODE_OK);
     }
     
-    
     @ResponseBody
-    @RequestMapping(value="test")
-    @Authority(type = AuthorityType.SECURITY)
+    @RequestMapping(value="test", method = RequestMethod.GET)
+    @Authority(type = AuthorityType.ANYMOUS)
     private ResponseEntity test(){
         //SecurityUtil.setSecurityUser(null);
         return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, null, HTTPCodeStatus.HTTPCODE_OK_MESSAGE);
