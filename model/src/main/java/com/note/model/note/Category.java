@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 /**
  * 类别
- * @author baixiaozheng@gmsdtech.com
+ * @author baixiaozheng
  * @Date 2015年11月24日 下午10:48:19
  */
 @Entity

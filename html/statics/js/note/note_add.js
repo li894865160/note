@@ -3,9 +3,9 @@ var category = "";
 $(document).ready(function() {
 
 	common.ajax({
-		url: '/web/category/list', // 跳转到 action  
+		url: '/web/category', // 跳转到 action  
 
-		type: 'post',
+		type: 'get',
 		cache: false,
 		dataType: 'json',
 		async: false,
@@ -25,9 +25,9 @@ $(document).ready(function() {
 	});
 
 	common.ajax({
-		url: '/web/tag/list', // 跳转到 action  
+		url: '/web/tag', // 跳转到 action  
 
-		type: 'post',
+		type: 'get',
 		cache: false,
 		dataType: 'json',
 		async: false,
@@ -110,7 +110,7 @@ function save() {
 	if ($('#addNoteForm').data('bootstrapValidator').isValid()) {
 		$.ajax({
 			type: "post",
-			url: "/web/note/add",
+			url: "/web/note",
 
 			data: $('#addNoteForm').serialize(),
 			error: function(request) {

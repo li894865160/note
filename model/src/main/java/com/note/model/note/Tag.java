@@ -12,6 +12,11 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * 标签
+ * @author baixiaozheng
+ * @Date 2015年12月17日 下午11:33:01
+ */
 @Entity
 @Table(name = "tag")
 public class Tag implements Serializable {

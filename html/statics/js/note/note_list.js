@@ -21,7 +21,7 @@ $(function() {
 function initTable(){
 	
 	$('#table').commonbootstrapTable({
-		url:"/web/note/list",
+		url:"/web/note",
 		queryParams: function(param) {
 			var p = {
 				pageSize: param.limit, //每页显示条数

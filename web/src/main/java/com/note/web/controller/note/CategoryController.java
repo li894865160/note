@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.note.common.HTTPCodeStatus;
@@ -25,7 +26,7 @@ public class CategoryController extends BaseController {
 
 	
 	@ResponseBody
-    @RequestMapping(value="list")
+    @RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity list(){
 		List<Category> tags = categoryService.list();
 		page.setResult(tags);

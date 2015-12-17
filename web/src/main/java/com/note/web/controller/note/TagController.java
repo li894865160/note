@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.note.common.HTTPCodeStatus;
@@ -24,11 +25,12 @@ public class TagController extends BaseController {
 	
 
 	@ResponseBody
-    @RequestMapping(value="list")
+    @RequestMapping(method = RequestMethod.GET)
 	public ResponseEntity list(){
 		List<Tag> tags = tagService.list();
 		page.setResult(tags);
 		return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, page, HTTPCodeStatus.HTTPCODE_OK_MESSAGE);
 	}
+	
 }
  

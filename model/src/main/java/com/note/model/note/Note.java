@@ -14,7 +14,7 @@ import javax.persistence.TemporalType;
 
 /**
  * 笔记主题
- * @author baixiaozheng@gmsdtech.com
+ * @author baixiaozheng
  * @Date 2015年11月24日 下午10:47:31
  */
 @Entity
@@ -80,7 +80,19 @@ public class Note implements Serializable {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "update_time")
     private Date updateTime;
+    
+    /**
+     * 是否正常（false为被删除）
+     */
+    @Column(name = "enable")
+    private Boolean enable;
 
+    /**
+     * 是否发布（true正常显示，false只在管理后台可见）
+     */
+    @Column(name = "publish")
+    private Boolean publish;
+    
 	public Integer getId() {
 		return id;
 	}
@@ -152,6 +164,22 @@ public class Note implements Serializable {
     public void setTitlePic(String titlePic) {
         this.titlePic = titlePic;
     }
+
+	public Boolean getEnable() {
+		return enable;
+	}
+
+	public void setEnable(Boolean enable) {
+		this.enable = enable;
+	}
+
+	public Boolean getPublish() {
+		return publish;
+	}
+
+	public void setPublish(Boolean publish) {
+		this.publish = publish;
+	}
 
 }
  

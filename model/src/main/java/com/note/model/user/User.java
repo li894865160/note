@@ -15,6 +15,11 @@ import javax.persistence.TemporalType;
 
 import org.hibernate.annotations.Type;
 
+/**
+ * 用户
+ * @author baixiaozheng
+ * @Date 2015年12月17日 下午11:36:05
+ */
 @Entity
 @Table(name = "user")
 public class User implements Serializable, Cloneable {
