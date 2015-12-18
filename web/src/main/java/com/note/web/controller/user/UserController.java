@@ -1,60 +1,41 @@
 package com.note.web.controller.user; 
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.note.common.HTTPCodeStatus;
+import com.note.common.Page;
 import com.note.model.user.User;
 import com.note.service.user.UserServices;
-import com.note.util.request.RequestUtil;
-import com.note.web.security.util.SecurityUtil;
+import com.note.web.controller.BaseController;
+import com.note.web.entity.ResponseEntity;
 
+@SuppressWarnings("rawtypes")
 @Controller
 @RequestMapping(value = "/user")
-public class UserController {
+public class UserController extends BaseController {
 
 	@Autowired
 	private UserServices userService;
 	
-	@RequestMapping(value="list",method=RequestMethod.GET)
-	public String list(Model model){
+	@RequestMapping(method = RequestMethod.GET)
+	public ResponseEntity list(Page page){
 		List<User> list = new ArrayList<User>();
 		list = userService.getAll();
-		model.addAttribute("list", list);
-		return "user/list";
+		page.setResult(list);
+		return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, page);
 	}
 	
-	@RequestMapping(value="add",method=RequestMethod.POST)
-	public String register(@ModelAttribute("user") User user){
-	    userService.add(user);
-	    return "redirect:/logout"; 
-	    //return list(model);
-	}
-	
-	@RequestMapping(value="loginSuccess")
-	public String loginSuccess(HttpServletRequest request) {
-		User user = SecurityUtil.currentLogin();
-		//System.out.println(user.getRealName()+"登录成功");
-		user = userService.getById(user.getId());
-		user.setLastestLoginTime(new Date());
-		user.setLastestLoginIp(RequestUtil.getRemoteIPAddress(request));
-		userService.update(user);
-		return "redirect:list"; 
-	}
-
-	@RequestMapping(value="loginFailed")
-	public String loginFailed() {
-		System.out.println("登录失败");
-		return "redirect:logout"; 
+	@RequestMapping(method = RequestMethod.POST)
+	public ResponseEntity register(@ModelAttribute("user") User user){
+	    user = userService.add(user);
+	    return returnSuccess(HTTPCodeStatus.HTTPCODE_OK, user);
 	}
 
 }
